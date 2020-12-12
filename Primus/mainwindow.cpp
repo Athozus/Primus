@@ -76,12 +76,13 @@ void MainWindow::calculate()
         if(prime) {
             n++;
         }
-        progressBar->setValue((i-min)/(max-min));
+        progressBar->setValue(ceil((i-min)/(max-min)));
     }
+
     progressBar->setValue(100);
     resultsExaminated->setText("Examinated: " + QString::number(max-min));
     resultsFound->setText("Found: " + QString::number(n));
-    resultsPercentage->setText("Percentage: " + QString::number(n/(max-min)) + " %");
+    resultsPercentage->setText("Percentage: " + QString::number(double(ceil(n/(max-min)*1000)/1000)) + " %");
 }
 
 MainWindow::~MainWindow()
