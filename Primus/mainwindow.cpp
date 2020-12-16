@@ -28,10 +28,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     minSpin = new QSpinBox();
     minSpin->setMinimum(2);
-    minSpin->setMaximum(pow(10, 48));
+    minSpin->setMaximum((int)pow(10, 48));
     maxSpin = new QSpinBox();
     maxSpin->setMinimum(2);
-    maxSpin->setMaximum(pow(10, 48));
+    maxSpin->setMaximum((int)pow(10, 48));
     maxSpin->setValue(1000);
 
     formLayout->addRow("Min", minSpin);
@@ -52,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent)
     resultsFound = new QLabel("Found: 0");
     mainLayout->addWidget(resultsFound, 4, 0);
 
-    resultsPercentage = new QLabel("Percentage: 0.00 %");
+    resultsPercentage = new QLabel("Percentage: 0.000 %");
     mainLayout->addWidget(resultsPercentage, 5, 0);
 }
 
@@ -76,13 +76,14 @@ void MainWindow::calculate()
         if(prime) {
             n++;
         }
-        progressBar->setValue(ceil((i-min)/(max-min)));
+        int progress = ( int ) round ( ( double ) ( i - min ) / ( max - min ) * 100 );
+        progressBar->setValue(progress);
     }
 
     progressBar->setValue(100);
     resultsExaminated->setText("Examinated: " + QString::number(max-min));
     resultsFound->setText("Found: " + QString::number(n));
-    resultsPercentage->setText("Percentage: " + QString::number(double(ceil(n/(max-min)*1000)/1000)) + " %");
+    resultsPercentage->setText( "Percentage: " + QString::number( ( ceil( ( double ) n / ( max - min ) * 1000) / 1000 ) ) + " %" );
 }
 
 MainWindow::~MainWindow()
