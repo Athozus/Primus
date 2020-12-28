@@ -9,6 +9,7 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QProgressBar>
+#include <QIcon>
 #include "cmath"
 
 QT_BEGIN_NAMESPACE
@@ -24,12 +25,15 @@ public:
     ~MainWindow();
 
 public slots:
+    void launchCalculating();
     void calculate();
+    void stop();
 
 private:
     Ui::MainWindow *ui;
     QSpinBox *minSpin;
     QSpinBox *maxSpin;
+    QPushButton *buttonCalculate;
     QProgressBar *progressBar;
     QLabel *resultsExaminated;
     QLabel *resultsFound;

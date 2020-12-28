@@ -7,6 +7,7 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QProgressBar>
+#include <QIcon>
 #include "cmath"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -16,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     setWindowTitle("Primus");
     setGeometry(240, 240, 200, 240);
+    setWindowIcon(QIcon("Icon.png"));
 
     QWidget *mainWidget = new QWidget();
     setCentralWidget(mainWidget);
@@ -27,19 +29,17 @@ MainWindow::MainWindow(QWidget *parent)
     mainLayout->addLayout(formLayout, 0, 0);
 
     minSpin = new QSpinBox();
-    minSpin->setMinimum(2);
-    minSpin->setMaximum(pow(10, 48));
+    minSpin->setRange(2, (int)pow(10, 48));
     maxSpin = new QSpinBox();
-    maxSpin->setMinimum(2);
-    maxSpin->setMaximum(pow(10, 48));
+    maxSpin->setRange(2, (int)pow(10, 48));
     maxSpin->setValue(1000);
 
     formLayout->addRow("Min", minSpin);
     formLayout->addRow("Max", maxSpin);
 
-    QPushButton *buttonCalculate = new QPushButton("Calculate");
+    buttonCalculate = new QPushButton("Calculate");
     mainLayout->addWidget(buttonCalculate, 1, 0);
-    connect(buttonCalculate, SIGNAL(clicked()), this, SLOT(calculate()));
+    connect(buttonCalculate, SIGNAL(clicked()), this, SLOT(launchCalculating()));
 
     progressBar = new QProgressBar();
     progressBar->setValue(0);
@@ -52,8 +52,16 @@ MainWindow::MainWindow(QWidget *parent)
     resultsFound = new QLabel("Found: 0");
     mainLayout->addWidget(resultsFound, 4, 0);
 
-    resultsPercentage = new QLabel("Percentage: 0.00 %");
+    resultsPercentage = new QLabel("Percentage: 0.000 %");
     mainLayout->addWidget(resultsPercentage, 5, 0);
+}
+
+void MainWindow::launchCalculating()
+{
+    buttonCalculate->setText("Stop calculating");
+    buttonCalculate->disconnect();
+    connect(buttonCalculate, SIGNAL(clicked()), this, SLOT(stop()));
+    calculate();
 }
 
 void MainWindow::calculate()
@@ -71,18 +79,32 @@ void MainWindow::calculate()
         for(j = min; j < sqrt(i); j++) {
             if (i%j == 0) {
                 prime = false;
+                break;
             }
         }
         if(prime) {
             n++;
         }
-        progressBar->setValue(ceil((i-min)/(max-min)));
+        int progress = ( int ) round ( ( double ) ( i - min ) / ( max - min ) * 100 );
+        progressBar->setValue(progress);
     }
 
     progressBar->setValue(100);
     resultsExaminated->setText("Examinated: " + QString::number(max-min));
     resultsFound->setText("Found: " + QString::number(n));
-    resultsPercentage->setText("Percentage: " + QString::number(double(ceil(n/(max-min)*1000)/1000)) + " %");
+    resultsPercentage->setText( "Percentage: " + QString::number( ( ceil( ( double ) n / ( max - min ) * 1000) / 1000 ) ) + " %" );    
+
+    buttonCalculate->setText("Calculate");
+    buttonCalculate->disconnect();
+    connect(buttonCalculate, SIGNAL(clicked()), this, SLOT(launchCalculating()));
+}
+
+void MainWindow::stop()
+{
+
+    buttonCalculate->setText("Calculate");
+    buttonCalculate->disconnect();
+    connect(buttonCalculate, SIGNAL(clicked()), this, SLOT(launchCalculating()));
 }
 
 MainWindow::~MainWindow()
