@@ -10,6 +10,8 @@
 #include <QLabel>
 #include <QProgressBar>
 #include <QIcon>
+#include <QPoint>
+#include <QMouseEvent>
 #include "cmath"
 
 QT_BEGIN_NAMESPACE
@@ -28,6 +30,9 @@ public slots:
     void launchCalculating();
     void calculate();
     void stop();
+    void mousePressEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
 
 private:
     Ui::MainWindow *ui;
@@ -38,5 +43,7 @@ private:
     QLabel *resultsExaminated;
     QLabel *resultsFound;
     QLabel *resultsPercentage;
+    QPoint mouseDifference;
+    bool table;
 };
 #endif // MAINWINDOW_H
