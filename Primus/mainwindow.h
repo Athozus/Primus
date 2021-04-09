@@ -12,6 +12,10 @@
 #include <QIcon>
 #include <QPoint>
 #include <QMouseEvent>
+#include <QFile>
+#include <QByteArray>
+#include <QFileDialog>
+#include <QDateTime>
 #include "cmath"
 
 QT_BEGIN_NAMESPACE
@@ -33,6 +37,7 @@ public slots:
     void mousePressEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
+    void downloadFile();
 
 private:
     Ui::MainWindow *ui;
@@ -44,6 +49,8 @@ private:
     QLabel *resultsFound;
     QLabel *resultsPercentage;
     QPoint mouseDifference;
+    QPushButton *buttonDownloadFile;
+    QFile *file;
     bool table;
 };
 #endif // MAINWINDOW_H
