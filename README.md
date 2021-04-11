@@ -26,7 +26,7 @@ primus
 
 ## Use Primus
 
-<img align="right" width="320" src="https://github.com/AirSThib/Primus/raw/main/screenshots/primus_0.2.1-beta.png" alt="Screenshot of the 0.2.1 beta version" />
+<img align="right" width="auto" src="https://github.com/AirSThib/Primus/raw/main/screenshots/primus_0.2.1-beta.png" alt="Screenshot of the 0.2.1 beta version" />
 
 Define where the algorithm will start (the minimum is the 2, because there is no primes before), and where it will end (no maximum).
 
