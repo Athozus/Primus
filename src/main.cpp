@@ -2,6 +2,8 @@
 
 #include <QApplication>
 #include <QFile>
+#include <QFont>
+#include <QFontDatabase>
 
 int main(int argc, char *argv[])
 {
@@ -12,6 +14,10 @@ int main(int argc, char *argv[])
 	file.open(QFile::ReadOnly);
 	QString styleSheet = QLatin1String(file.readAll());
 	a.setStyleSheet(styleSheet);
+
+	QFontDatabase::addApplicationFont("RedHatDisplay-Regular.ttf");
+	QFont redHatDisplay("RedHatDisplay-Regular", 16, QFont::Normal);
+	a.setFont(redHatDisplay);
     
 	MainWindow w;
 	w.show();
