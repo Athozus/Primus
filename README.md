@@ -63,4 +63,4 @@ Ended 2021-04-10T18:42:32.937Z
 
 ## Contribute
 
-Report issues, fork, push merge requets, all can help the project !
+[Report issues](https://github.com/AirSThib/Primus/issues), fork, push merge requets, all can help the project !
