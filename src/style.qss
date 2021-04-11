@@ -1,3 +1,8 @@
+@font-face {
+	font-family: "Red Hat Display";
+	src: url("RedHatDisplay-Regular.ttf");
+}
+
 * {
 	font-family: "Red Hat Display";
 }
