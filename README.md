@@ -26,6 +26,8 @@ primus
 
 ## Use Primus
 
+![Screenshot of the 0.2.1 beta version](https://github.com/AirSThib/Primus/raw/main/screenshots/primus_0.2.1-beta.png)
+
 Define where the algorithm will start (the minimum is the 2, because there is no primes before), and where it will end (no maximum).
 
 Launch calculating by clicking on `Calculate`. The progress bar will indicate the avancment of the calculating.
