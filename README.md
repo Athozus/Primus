@@ -5,17 +5,17 @@ GUI to calculate prime numbers
 
 ### Debian
 
-Do in the directory you choosed
+Run in the directory you choosed...
 ```shell
 wget https://github.com/AirSThib/Primus/releases/download/0.2.1-beta/primus_0.2.1-beta.deb
 ```
 
-And install it
+...Install it...
 ```shell
 sudo dpkg -i primus_0.2.1-beta.deb
 ```
 
-Launch it with
+... And launch it with
 ```shell
 primus
 ```
