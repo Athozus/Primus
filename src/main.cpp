@@ -10,8 +10,8 @@ int main(int argc, char *argv[])
 	QApplication a(argc, argv);
 	a.setApplicationDisplayName("Primus v.0.2.1 αlpha");
 
-	QFontDatabase::addApplicationFont("RedHatDisplay-Regular.ttf");
-        QFont redHatDisplay("RedHatDisplay-Regular", 12, QFont::Normal);
+	QFontDatabase::addApplicationFont("RedHatDisplay-Regular.woff");
+        QFont redHatDisplay("Red Hat Display", 1);
         a.setFont(redHatDisplay);
 
     	QFile file(a.applicationDirPath() + "/style.qss");

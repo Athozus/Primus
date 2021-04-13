@@ -1,3 +1,7 @@
+* {
+	font-size: 12px;
+}
+
 #mainWindow {
 	background: #eee;
 	border-radius: 16px;
