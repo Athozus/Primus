@@ -22,7 +22,7 @@ primus
 
 ### Windows
 
-[Download the `.zip`](https://github.com/AirSThib/Primus/releases/download/0.2.1-beta/Primus-mingw32.zip). De-zip it. Launch the file called `Primus.exe`.
+[Download the `.zip`](https://github.com/AirSThib/Primus/releases/download/0.2.1-beta/primus_0.2.1-beta_mingw32.zip). De-zip it. Launch the file called `Primus.exe`.
 
 ## Use Primus
 
