@@ -10,8 +10,6 @@
 #include <QLabel>
 #include <QProgressBar>
 #include <QIcon>
-#include <QPoint>
-#include <QMouseEvent>
 #include <QFile>
 #include <QByteArray>
 #include <QFileDialog>
@@ -34,9 +32,6 @@ public slots:
     void launchCalculating();
     void calculate();
     void stop();
-    void mousePressEvent(QMouseEvent *event);
-    void mouseReleaseEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
     void downloadFile();
 
 private:
@@ -48,7 +43,6 @@ private:
     QLabel *resultsExaminated;
     QLabel *resultsFound;
     QLabel *resultsPercentage;
-    QPoint mouseDifference;
     QPushButton *buttonDownloadFile;
     QFile *file;
     bool table;
